@@ -1,0 +1,9 @@
+{
+  "name": "fracture-finder",
+  "version": "1.0.0",
+  "description": "90-second diagnostic for LinkedIn stalls",
+  "scripts": {
+    "dev": "vercel dev",
+    "deploy": "vercel --prod"
+  }
+}
