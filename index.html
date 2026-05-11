@@ -3,193 +3,700 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Find Your Fracture — 90-Second Diagnostic for LinkedIn Stalls</title>
-    <meta name="description" content="Most local business owners on LinkedIn are broken in one of three places. Take the 90-second diagnostic to find your fracture.">
+    <title>Find Your Fracture — 90 Second Diagnostic</title>
+    <meta name="description" content="90-second diagnostic for LinkedIn stalls. Find out if your avatar, offer, or copy is broken.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root { --primary: #667eea; --primary-dark: #764ba2; --text: #1a1a2e; --text-light: #555; --bg: #fafafa; }
-        body { font-family: 'Inter', sans-serif; line-height: 1.7; color: var(--text); background: var(--bg); }
-        .hero { background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 60px 20px; position: relative; overflow: hidden; }
-        .hero::before { content: ''; position: absolute; top: -50%; right: -20%; width: 600px; height: 600px; background: rgba(255,255,255,0.1); border-radius: 50%; animation: float 20s infinite ease-in-out; }
-        @keyframes float { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(30px, -30px); } }
-        .hero-content { max-width: 800px; text-align: center; color: white; position: relative; z-index: 1; }
-        .hero-badge { display: inline-block; background: rgba(255,255,255,0.2); backdrop-filter: blur(10px); padding: 10px 24px; border-radius: 50px; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px; border: 1px solid rgba(255,255,255,0.3); }
-        .hero h1 { font-family: 'Playfair Display', serif; font-size: 56px; line-height: 1.2; margin-bottom: 25px; }
-        .hero h1 span { background: linear-gradient(135deg, #fff, #ffe66d); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .hero-subtitle { font-size: 22px; opacity: 0.95; max-width: 600px; margin: 0 auto 40px; }
-        .hero-cta { display: inline-block; background: white; color: var(--primary-dark); padding: 20px 50px; border-radius: 50px; font-size: 18px; font-weight: 700; text-decoration: none; transition: all 0.3s ease; box-shadow: 0 10px 40px rgba(0,0,0,0.2); }
-        .hero-cta:hover { transform: translateY(-3px); box-shadow: 0 15px 50px rgba(0,0,0,0.3); }
-        .section { padding: 100px 20px; max-width: 800px; margin: 0 auto; }
-        .section-dark { background: var(--text); color: white; }
-        .section-dark .section-content { max-width: 800px; margin: 0 auto; padding: 0 20px; }
-        h2 { font-family: 'Playfair Display', serif; font-size: 42px; margin-bottom: 30px; line-height: 1.3; }
-        h3 { font-size: 24px; font-weight: 700; margin: 40px 0 20px; color: var(--primary); }
-        .section-dark h3 { color: #ffe66d; }
-        p { font-size: 18px; margin-bottom: 25px; color: var(--text-light); }
-        .section-dark p { color: rgba(255,255,255,0.85); }
-        .highlight-box { background: linear-gradient(135deg, rgba(102,126,234,0.1), rgba(118,75,162,0.1)); border-left: 4px solid var(--primary); padding: 30px; border-radius: 12px; margin: 40px 0; }
-        .highlight-box p { margin: 0; font-size: 20px; font-weight: 600; color: var(--text); }
-        .fractures-grid { display: grid; gap: 30px; margin: 50px 0; }
-        .fracture-card { background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.08); border: 1px solid #f0f0f0; }
-        .fracture-icon { font-size: 48px; margin-bottom: 20px; }
-        .fracture-card h3 { margin-top: 0; font-size: 28px; }
-        .fracture-card ul { list-style: none; padding: 0; }
-        .fracture-card li { padding: 10px 0 10px 30px; position: relative; color: var(--text-light); }
-        .fracture-card li::before { content: '→'; position: absolute; left: 0; color: var(--primary); font-weight: 700; }
-        .steps { display: grid; gap: 30px; margin: 50px 0; }
-        .step { display: flex; align-items: flex-start; gap: 25px; }
-        .step-number { width: 50px; height: 50px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 800; flex-shrink: 0; }
-        .step-content h4 { font-size: 20px; margin-bottom: 10px; }
-        .step-content p { margin: 0; }
-        .cta-section { background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); padding: 100px 20px; text-align: center; color: white; }
-        .cta-section h2 { font-size: 48px; margin-bottom: 25px; }
-        .cta-section p { font-size: 20px; opacity: 0.95; max-width: 600px; margin: 0 auto 40px; }
-        .cta-button-large { display: inline-block; background: white; color: var(--primary-dark); padding: 25px 60px; border-radius: 50px; font-size: 20px; font-weight: 700; text-decoration: none; transition: all 0.3s ease; box-shadow: 0 15px 50px rgba(0,0,0,0.3); }
-        .cta-button-large:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
-        .quiz-section { background: white; padding: 80px 20px; }
-        .quiz-container { max-width: 700px; margin: 0 auto; background: linear-gradient(135deg, rgba(102,126,234,0.05), rgba(118,75,162,0.05)); padding: 50px; border-radius: 24px; border: 2px solid rgba(102,126,234,0.2); }
-        .quiz-header { text-align: center; margin-bottom: 40px; }
-        .quiz-header h2 { font-size: 36px; margin-bottom: 15px; }
-        .option { padding: 20px; border: 2px solid #e8e8e8; border-radius: 12px; cursor: pointer; transition: all 0.3s ease; background: white; margin-bottom: 15px; }
-        .option:hover { border-color: var(--primary); transform: translateX(5px); }
-        .option-letter { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border-radius: 50%; font-weight: 700; margin-right: 12px; font-size: 14px; }
-        .footer { background: var(--text); color: rgba(255,255,255,0.6); padding: 40px 20px; text-align: center; font-size: 14px; }
-        @media (max-width: 768px) { .hero h1 { font-size: 36px; } .hero-subtitle { font-size: 18px; } h2 { font-size: 32px; } .section { padding: 60px 20px; } .quiz-container { padding: 30px; } }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #1a1a2e;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            min-height: 100vh;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+        
+        /* Animated background shapes */
+        .bg-shapes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+        
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.6;
+            animation: float 20s infinite ease-in-out;
+        }
+        
+        .shape-1 {
+            width: 400px;
+            height: 400px;
+            background: #ff6b6b;
+            top: -100px;
+            right: -100px;
+            animation-delay: 0s;
+        }
+        
+        .shape-2 {
+            width: 300px;
+            height: 300px;
+            background: #4ecdc4;
+            bottom: -50px;
+            left: -50px;
+            animation-delay: -5s;
+        }
+        
+        .shape-3 {
+            width: 250px;
+            height: 250px;
+            background: #ffe66d;
+            top: 50%;
+            left: 50%;
+            animation-delay: -10s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(50px, -50px) scale(1.1); }
+            50% { transform: translate(-30px, 30px) scale(0.9); }
+            75% { transform: translate(30px, 50px) scale(1.05); }
+        }
+        
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 50px;
+            border-radius: 24px;
+            box-shadow: 0 25px 80px rgba(0,0,0,0.15), 0 0 0 1px rgba(255,255,255,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            margin-bottom: 15px;
+            color: #1a1a2e;
+            line-height: 1.2;
+        }
+        
+        h1 span {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            color: #666;
+            font-size: 20px;
+            font-weight: 400;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .progress-container {
+            margin-bottom: 40px;
+        }
+        
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #667eea;
+        }
+        
+        .progress-bar {
+            height: 10px;
+            background: #e8e8e8;
+            border-radius: 5px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            border-radius: 5px;
+            transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: shimmer 2s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        .question {
+            display: none;
+        }
+        
+        .question.active {
+            display: block;
+            animation: slideUp 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        @keyframes slideUp {
+            from { 
+                opacity: 0; 
+                transform: translateY(30px);
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0);
+            }
+        }
+        
+        .question-number {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #667eea;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .question-text {
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 35px;
+            color: #1a1a2e;
+            line-height: 1.3;
+        }
+        
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        
+        .option {
+            padding: 24px 28px;
+            border: 2px solid #e8e8e8;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .option::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(102,126,234,0.1), rgba(118,75,162,0.1));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .option:hover {
+            border-color: #667eea;
+            transform: translateX(8px) scale(1.02);
+            box-shadow: 0 10px 30px rgba(102,126,234,0.2);
+        }
+        
+        .option:hover::before {
+            opacity: 1;
+        }
+        
+        .option-letter {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 50%;
+            font-weight: 800;
+            margin-right: 16px;
+            font-size: 16px;
+            box-shadow: 0 4px 15px rgba(102,126,234,0.3);
+        }
+        
+        .result {
+            display: none;
+            text-align: center;
+            animation: slideUp 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .result.active {
+            display: block;
+        }
+        
+        .result-icon {
+            font-size: 80px;
+            margin-bottom: 25px;
+            animation: bounce 1s ease;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .result-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #1a1a2e;
+        }
+        
+        .result-description {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 35px;
+            text-align: left;
+            line-height: 1.7;
+            padding: 25px;
+            background: linear-gradient(135deg, rgba(102,126,234,0.05), rgba(118,75,162,0.05));
+            border-radius: 16px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .result-section {
+            margin-bottom: 30px;
+            text-align: left;
+            padding: 25px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border: 1px solid #f0f0f0;
+        }
+        
+        .result-section h3 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #667eea;
+            margin-bottom: 15px;
+            font-weight: 800;
+        }
+        
+        .result-section p, .result-section ul {
+            color: #444;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+        
+        .result-section ul {
+            margin-left: 0;
+            list-style: none;
+        }
+        
+        .result-section li {
+            margin-bottom: 10px;
+            padding-left: 28px;
+            position: relative;
+        }
+        
+        .result-section li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: 700;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 22px 45px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 14px;
+            font-weight: 700;
+            font-size: 18px;
+            margin-top: 25px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 30px rgba(102,126,234,0.4);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(102,126,234,0.5);
+        }
+        
+        .cta-button:hover::before {
+            left: 100%;
+        }
+        
+        .secondary-cta {
+            display: block;
+            margin-top: 20px;
+            color: #667eea;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        
+        .secondary-cta:hover {
+            color: #764ba2;
+        }
+        
+        .disclaimer {
+            margin-top: 50px;
+            padding-top: 25px;
+            border-top: 1px solid #e8e8e8;
+            font-size: 13px;
+            color: #999;
+            text-align: center;
+        }
+        
+        .intro {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .intro p {
+            color: #666;
+            font-size: 18px;
+            line-height: 1.7;
+        }
+        
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+            
+            .container {
+                padding: 30px 25px;
+                border-radius: 20px;
+            }
+            
+            h1 {
+                font-size: 34px;
+            }
+            
+            .question-text {
+                font-size: 22px;
+            }
+            
+            .option {
+                padding: 18px 20px;
+            }
+            
+            .result-title {
+                font-size: 28px;
+            }
+        }
     </style>
 </head>
 <body>
-    <section class="hero">
-        <div class="hero-content">
-            <div class="hero-badge">90-Second Diagnostic</div>
-            <h1>You've Posted 47 Times and Got 3 Leads. <span>Here's Why.</span></h1>
-            <p class="hero-subtitle">Most local business owners on LinkedIn are broken in one of three places. Take the diagnostic to find your fracture.</p>
-            <a href="#quiz" class="hero-cta">Find Your Fracture →</a>
+    <div class="bg-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+    
+    <div class="container">
+        <div class="header">
+            <div class="badge">90 Second Diagnostic</div>
+            <h1>Find Your <span>Fracture</span></h1>
+            <p class="subtitle">Discover why your LinkedIn isn't converting — and which of the three fractures is breaking it.</p>
         </div>
-    </section>
-
-    <section class="section">
-        <h2>You've been posting on LinkedIn.</h2>
-        <p>Consistently. Or at least, consistently enough.</p>
-        <p>You've followed the advice. The "post daily" crowd. The "engage with everyone" crowd. The "provide value" crowd.</p>
-        <p>And somewhere around post 47, you started to wonder:</p>
-        <div class="highlight-box">
-            <p>"Is this whole thing just a waste of time?"</p>
+        
+        <div class="progress-container">
+            <div class="progress-header">
+                <span>Progress</span>
+                <span id="progress-text">0%</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress" style="width: 0%"></div>
+            </div>
         </div>
-        <p>The likes trickle in. From people who'll never buy. From peers who are also shouting into the void.</p>
-        <p>Meanwhile, the competitors you don't fully respect seem to be scaling. And you're starting to wonder if they know something you don't.</p>
-    </section>
-
-    <section class="section-dark">
-        <div class="section-content">
-            <h2>Here's what nobody tells you:</h2>
-            <p><strong>Posting consistently is not the problem.</strong></p>
-            <p>Most local business owners aren't failing on LinkedIn because they're lazy. They're failing because they're <strong>broken in one of three places</strong> — and they don't know which one.</p>
-            <h3>I call them The Three Fractures:</h3>
+        
+        <!-- Question 1 -->
+        <div class="question active" data-question="1">
+            <div class="question-number">Question 1 of 5</div>
+            <div class="question-text">When you post on LinkedIn, who are you actually writing to?</div>
+            <div class="options">
+                <div class="option" data-value="A">
+                    <span class="option-letter">A</span>"Anyone who might need my service" — I want to cast a wide net
+                </div>
+                <div class="option" data-value="B">
+                    <span class="option-letter">B</span>"A specific person I can describe in detail" — I know exactly who I'm talking to
+                </div>
+                <div class="option" data-value="C">
+                    <span class="option-letter">C</span>"I'm not totally sure" — I adjust based on what seems to work
+                </div>
+            </div>
         </div>
-    </section>
-
-    <section class="section">
-        <div class="fractures-grid">
-            <div class="fracture-card">
-                <div class="fracture-icon">🎯</div>
-                <h3>Fracture #1: AVATAR</h3>
-                <p style="margin-bottom: 20px;">You're speaking to "everyone" so you're reaching no one.</p>
+        
+        <!-- Question 2 -->
+        <div class="question" data-question="2">
+            <div class="question-number">Question 2 of 5</div>
+            <div class="question-text">Look at your last 5 posts. What do they mostly talk about?</div>
+            <div class="options">
+                <div class="option" data-value="A">
+                    <span class="option-letter">A</span>My process, my credentials, how I do what I do
+                </div>
+                <div class="option" data-value="B">
+                    <span class="option-letter">B</span>The transformation my clients experience
+                </div>
+                <div class="option" data-value="C">
+                    <span class="option-letter">C</span>Tips, advice, industry insights
+                </div>
+            </div>
+        </div>
+        
+        <!-- Question 3 -->
+        <div class="question" data-question="3">
+            <div class="question-number">Question 3 of 5</div>
+            <div class="question-text">Read one of your posts out loud. Whose voice do you hear?</div>
+            <div class="options">
+                <div class="option" data-value="A">
+                    <span class="option-letter">A</span>Someone professional, polished, a bit formal
+                </div>
+                <div class="option" data-value="B">
+                    <span class="option-letter">B</span>Me talking to a client I know well
+                </div>
+                <div class="option" data-value="C">
+                    <span class="option-letter">C</span>I'm not sure / it changes depending on the post
+                </div>
+            </div>
+        </div>
+        
+        <!-- Question 4 -->
+        <div class="question" data-question="4">
+            <div class="question-number">Question 4 of 5</div>
+            <div class="question-text">What's your actual frustration with LinkedIn? (Be honest.)</div>
+            <div class="options">
+                <div class="option" data-value="A">
+                    <span class="option-letter">A</span>Not enough followers or engagement
+                </div>
+                <div class="option" data-value="B">
+                    <span class="option-letter">B</span>Followers and likes, but no real leads
+                </div>
+                <div class="option" data-value="C">
+                    <span class="option-letter">C</span>I feel invisible — like I'm shouting into an empty room
+                </div>
+            </div>
+        </div>
+        
+        <!-- Question 5 -->
+        <div class="question" data-question="5">
+            <div class="question-number">Question 5 of 5</div>
+            <div class="question-text">If a prospect read your LinkedIn profile and your last 3 posts, what would they know about you?</div>
+            <div class="options">
+                <div class="option" data-value="A">
+                    <span class="option-letter">A</span>What I do, my background, my services
+                </div>
+                <div class="option" data-value="B">
+                    <span class="option-letter">B</span>What I believe, who I serve, why I do this work
+                </div>
+                <div class="option" data-value="C">
+                    <span class="option-letter">C</span>That I'm knowledgeable about my industry
+                </div>
+            </div>
+        </div>
+        
+        <!-- Results -->
+        <div class="result" id="result-avatar">
+            <div class="result-icon">🎯</div>
+            <div class="result-title">Your Fracture: AVATAR</div>
+            <div class="result-description">
+                You're speaking to "everyone" so you're reaching no one. Your content is too broad to resonate deeply with the people who would actually pay you.
+            </div>
+            <div class="result-section">
+                <h3>The Evidence</h3>
                 <ul>
-                    <li>Posts get likes from peers, not leads</li>
-                    <li>You attract price-shoppers</li>
-                    <li>Your message feels generic</li>
+                    <li>Posts get likes from peers, not leads from prospects</li>
+                    <li>You attract price-shoppers and tire-kickers</li>
+                    <li>Your message feels generic even to you</li>
                 </ul>
             </div>
-            <div class="fracture-card">
-                <div class="fracture-icon">💎</div>
-                <h3>Fracture #2: OFFER</h3>
-                <p style="margin-bottom: 20px;">You're selling what you do, not the transformation.</p>
+            <div class="result-section">
+                <h3>The Fix</h3>
+                <p>Narrow until it hurts. Name one specific person — their age, their business, their exact problem. Write to them exclusively. Everyone else is a bonus.</p>
+            </div>
+            <a href="https://calendly.com/reyescastillo/fracture-map" class="cta-button">Book Your Fracture Map Call — $500</a>
+            <a href="mailto:reyes@agentmail.to?subject=Question about my Avatar fracture" class="secondary-cta">Have a question? Email me directly</a>
+        </div>
+        
+        <div class="result" id="result-offer">
+            <div class="result-icon">💎</div>
+            <div class="result-title">Your Fracture: OFFER</div>
+            <div class="result-description">
+                You're selling what you do (the process) instead of the transformation (the result). Your prospects can't see why they should pay premium prices for what looks like a commodity.
+            </div>
+            <div class="result-section">
+                <h3>The Evidence</h3>
                 <ul>
                     <li>Conversations stall on price</li>
                     <li>You compete with cheaper alternatives</li>
                     <li>Prospects don't understand your value</li>
                 </ul>
             </div>
-            <div class="fracture-card">
-                <div class="fracture-icon">🎙️</div>
-                <h3>Fracture #3: COPY</h3>
-                <p style="margin-bottom: 20px;">Your voice doesn't sound like you.</p>
+            <div class="result-section">
+                <h3>The Fix</h3>
+                <p>Stop describing your process. Start describing their life after working with you. The offer isn't what you do — it's who they become.</p>
+            </div>
+            <a href="https://calendly.com/reyescastillo/fracture-map" class="cta-button">Book Your Fracture Map Call — $500</a>
+            <a href="mailto:reyes@agentmail.to?subject=Question about my Offer fracture" class="secondary-cta">Have a question? Email me directly</a>
+        </div>
+        
+        <div class="result" id="result-copy">
+            <div class="result-icon">🎙️</div>
+            <div class="result-title">Your Fracture: COPY</div>
+            <div class="result-description">
+                Your voice doesn't sound like you. You're performing "professional" or mimicking coaches you admire instead of communicating in your actual voice.
+            </div>
+            <div class="result-section">
+                <h3>The Evidence</h3>
                 <ul>
                     <li>Writing feels exhausting or fake</li>
-                    <li>You avoid posting</li>
-                    <li>You sound like everyone else</li>
+                    <li>You avoid posting because it doesn't feel right</li>
+                    <li>Your content sounds like everyone else's</li>
                 </ul>
             </div>
+            <div class="result-section">
+                <h3>The Fix</h3>
+                <p>Record yourself explaining your work to a client you know well. Transcribe it. That's your voice. Use that.</p>
+            </div>
+            <a href="https://calendly.com/reyescastillo/fracture-map" class="cta-button">Book Your Fracture Map Call — $500</a>
+            <a href="mailto:reyes@agentmail.to?subject=Question about my Copy fracture" class="secondary-cta">Have a question? Email me directly</a>
         </div>
-    </section>
-
-    <section class="section-dark">
-        <div class="section-content">
-            <h2>The brutal truth:</h2>
-            <p style="font-size: 24px; font-weight: 700; color: #ffe66d; margin: 30px 0;">You can't fix what you can't see.</p>
-            <p>Most operators never diagnose. They just keep posting and hoping.</p>
-        </div>
-    </section>
-
-    <section class="section">
-        <h2>I built something to fix this.</h2>
-        <p style="font-size: 24px; font-weight: 700; color: var(--primary);">The Fracture Finder.</p>
-        <p>A 90-second diagnostic that shows you exactly which of the three fractures is breaking your LinkedIn.</p>
         
-        <h3>Here's how it works:</h3>
-        <div class="steps">
-            <div class="step">
-                <div class="step-number">1</div>
-                <div class="step-content"><h4>Answer 5 diagnostic questions</h4><p>About your LinkedIn presence (90 seconds)</p></div>
-            </div>
-            <div class="step">
-                <div class="step-number">2</div>
-                <div class="step-content"><h4>Get your primary fracture</h4><p>Avatar, Offer, or Copy</p></div>
-            </div>
-            <div class="step">
-                <div class="step-number">3</div>
-                <div class="step-content"><h4>See the evidence</h4><p>Why this fracture is showing up</p></div>
-            </div>
-            <div class="step">
-                <div class="step-number">4</div>
-                <div class="step-content"><h4>Get the fix</h4><p>What to do about it</p></div>
-            </div>
+        <div class="disclaimer">
+            Built by Reyes Castillo | The Authority Architect™
         </div>
-    </section>
-
-    <section class="quiz-section" id="quiz">
-        <div class="quiz-container">
-            <div class="quiz-header">
-                <h2>Take the Diagnostic</h2>
-                <p style="color: var(--text-light);">5 questions. 90 seconds. Find your fracture.</p>
-            </div>
-            <div style="margin-bottom: 40px;">
-                <div style="display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 14px; font-weight: 600; color: var(--primary);">
-                    <span>Progress</span><span id="progress-text">0%</span>
-                </div>
-                <div style="height: 10px; background: #e8e8e8; border-radius: 5px; overflow: hidden;">
-                    <div id="progress" style="height: 100%; background: linear-gradient(90deg, var(--primary), var(--primary-dark)); border-radius: 5px; transition: width 0.5s ease; width: 0%;"></div>
-                </div>
-            </div>
-            <div id="quiz-content">
-                <!-- Quiz loaded via iframe or redirect to standalone -->
-                <p style="text-align: center; margin: 40px 0;">Take the quiz at:</p>
-                <a href="https://fracture-finder.vercel.app" style="display: block; text-align: center; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; padding: 20px; border-radius: 12px; font-weight: 700; text-decoration: none; font-size: 18px;">fracture-finder.vercel.app</a>
-            </div>
-        </div>
-    </section>
-
-    <section class="cta-section">
-        <h2>Find Your Fracture.</h2>
-        <p>Fix it. Move forward.</p>
-        <a href="https://fracture-finder.vercel.app" class="cta-button-large">Take the 90-Second Diagnostic →</a>
-    </section>
-
-    <footer class="footer">
-        <p>Built by Reyes Castillo | The Authority Architect™</p>
-    </footer>
+    </div>
+    
+    <script>
+        let answers = {A: 0, B: 0, C: 0};
+        let currentQuestion = 1;
+        const totalQuestions = 5;
+        
+        function updateProgress() {
+            const progress = ((currentQuestion - 1) / totalQuestions) * 100;
+            document.getElementById('progress').style.width = progress + '%';
+            document.getElementById('progress-text').textContent = Math.round(progress) + '%';
+        }
+        
+        function showQuestion(num) {
+            document.querySelectorAll('.question').forEach(q => q.classList.remove('active'));
+            document.querySelector(`[data-question="${num}"]`).classList.add('active');
+            updateProgress();
+        }
+        
+        function showResult() {
+            document.querySelectorAll('.question').forEach(q => q.classList.remove('active'));
+            document.querySelector('.progress-container').style.display = 'none';
+            
+            // Determine result
+            let max = Math.max(answers.A, answers.B, answers.C);
+            let resultType = '';
+            
+            if (answers.A === max) resultType = 'avatar';
+            else if (answers.B === max) resultType = 'offer';
+            else resultType = 'copy';
+            
+            document.getElementById(`result-${resultType}`).classList.add('active');
+            
+            // Send to analytics (optional)
+            console.log('Fracture Finder completed:', {result: resultType, answers: answers});
+        }
+        
+        document.querySelectorAll('.option').forEach(option => {
+            option.addEventListener('click', function() {
+                const value = this.getAttribute('data-value');
+                answers[value]++;
+                
+                if (currentQuestion < totalQuestions) {
+                    currentQuestion++;
+                    showQuestion(currentQuestion);
+                } else {
+                    showResult();
+                }
+            });
+        });
+    </script>
 </body>
 </html>
