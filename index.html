@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Find Your Fracture — 90 Second Diagnostic</title>
     <meta name="description" content="90-second diagnostic for LinkedIn stalls. Find out if your avatar, offer, or copy is broken.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -13,52 +16,182 @@
         }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #1a1a2e;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
             min-height: 100vh;
             padding: 20px;
+            overflow-x: hidden;
+        }
+        
+        /* Animated background shapes */
+        .bg-shapes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+        
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.6;
+            animation: float 20s infinite ease-in-out;
+        }
+        
+        .shape-1 {
+            width: 400px;
+            height: 400px;
+            background: #ff6b6b;
+            top: -100px;
+            right: -100px;
+            animation-delay: 0s;
+        }
+        
+        .shape-2 {
+            width: 300px;
+            height: 300px;
+            background: #4ecdc4;
+            bottom: -50px;
+            left: -50px;
+            animation-delay: -5s;
+        }
+        
+        .shape-3 {
+            width: 250px;
+            height: 250px;
+            background: #ffe66d;
+            top: 50%;
+            left: 50%;
+            animation-delay: -10s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(50px, -50px) scale(1.1); }
+            50% { transform: translate(-30px, 30px) scale(0.9); }
+            75% { transform: translate(30px, 50px) scale(1.05); }
         }
         
         .container {
-            max-width: 600px;
+            max-width: 700px;
             margin: 0 auto;
-            background: white;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 50px;
+            border-radius: 24px;
+            box-shadow: 0 25px 80px rgba(0,0,0,0.15), 0 0 0 1px rgba(255,255,255,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
         }
         
         .header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
         
         h1 {
-            font-size: 32px;
-            margin-bottom: 10px;
-            color: #2c3e50;
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            margin-bottom: 15px;
+            color: #1a1a2e;
+            line-height: 1.2;
+        }
+        
+        h1 span {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
         .subtitle {
             color: #666;
-            font-size: 18px;
+            font-size: 20px;
+            font-weight: 400;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .progress-container {
+            margin-bottom: 40px;
+        }
+        
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #667eea;
         }
         
         .progress-bar {
-            height: 6px;
-            background: #e0e0e0;
-            border-radius: 3px;
-            margin-bottom: 30px;
+            height: 10px;
+            background: #e8e8e8;
+            border-radius: 5px;
             overflow: hidden;
+            position: relative;
         }
         
         .progress-fill {
             height: 100%;
-            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
-            border-radius: 3px;
-            transition: width 0.3s ease;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            border-radius: 5px;
+            transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: shimmer 2s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
         }
         
         .question {
@@ -67,70 +200,95 @@
         
         .question.active {
             display: block;
-            animation: fadeIn 0.3s ease;
+            animation: slideUp 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+        @keyframes slideUp {
+            from { 
+                opacity: 0; 
+                transform: translateY(30px);
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0);
+            }
         }
         
         .question-number {
-            font-size: 12px;
+            font-size: 13px;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             color: #667eea;
-            margin-bottom: 10px;
-            font-weight: 600;
+            margin-bottom: 15px;
+            font-weight: 700;
         }
         
         .question-text {
-            font-size: 22px;
-            font-weight: 600;
-            margin-bottom: 25px;
-            color: #2c3e50;
-            line-height: 1.4;
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 35px;
+            color: #1a1a2e;
+            line-height: 1.3;
         }
         
         .options {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 16px;
         }
         
         .option {
-            padding: 18px 20px;
+            padding: 24px 28px;
             border: 2px solid #e8e8e8;
-            border-radius: 10px;
+            border-radius: 16px;
             cursor: pointer;
-            transition: all 0.2s ease;
-            background: #fafafa;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .option::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(102,126,234,0.1), rgba(118,75,162,0.1));
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
         
         .option:hover {
             border-color: #667eea;
-            background: #f5f7ff;
-            transform: translateX(4px);
+            transform: translateX(8px) scale(1.02);
+            box-shadow: 0 10px 30px rgba(102,126,234,0.2);
+        }
+        
+        .option:hover::before {
+            opacity: 1;
         }
         
         .option-letter {
-            display: inline-block;
-            width: 28px;
-            height: 28px;
-            background: #667eea;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
             color: white;
             border-radius: 50%;
-            text-align: center;
-            line-height: 28px;
-            font-weight: 700;
-            margin-right: 12px;
-            font-size: 14px;
+            font-weight: 800;
+            margin-right: 16px;
+            font-size: 16px;
+            box-shadow: 0 4px 15px rgba(102,126,234,0.3);
         }
         
         .result {
             display: none;
             text-align: center;
-            animation: fadeIn 0.5s ease;
+            animation: slideUp 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
         .result.active {
@@ -138,128 +296,200 @@
         }
         
         .result-icon {
-            font-size: 64px;
-            margin-bottom: 20px;
+            font-size: 80px;
+            margin-bottom: 25px;
+            animation: bounce 1s ease;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
         }
         
         .result-title {
-            font-size: 28px;
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
             font-weight: 700;
             margin-bottom: 20px;
-            color: #2c3e50;
+            color: #1a1a2e;
         }
         
         .result-description {
-            font-size: 17px;
+            font-size: 18px;
             color: #555;
-            margin-bottom: 30px;
+            margin-bottom: 35px;
             text-align: left;
-            line-height: 1.6;
-        }
-        
-        .result-section {
-            margin-bottom: 25px;
-            text-align: left;
-            padding: 20px;
-            background: #f8f9fa;
-            border-radius: 8px;
+            line-height: 1.7;
+            padding: 25px;
+            background: linear-gradient(135deg, rgba(102,126,234,0.05), rgba(118,75,162,0.05));
+            border-radius: 16px;
             border-left: 4px solid #667eea;
         }
         
+        .result-section {
+            margin-bottom: 30px;
+            text-align: left;
+            padding: 25px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border: 1px solid #f0f0f0;
+        }
+        
         .result-section h3 {
-            font-size: 13px;
+            font-size: 14px;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
             color: #667eea;
-            margin-bottom: 10px;
-            font-weight: 700;
+            margin-bottom: 15px;
+            font-weight: 800;
         }
         
         .result-section p, .result-section ul {
-            color: #555;
-            font-size: 15px;
-            line-height: 1.6;
+            color: #444;
+            font-size: 16px;
+            line-height: 1.7;
         }
         
         .result-section ul {
-            margin-left: 20px;
+            margin-left: 0;
+            list-style: none;
         }
         
         .result-section li {
-            margin-bottom: 6px;
+            margin-bottom: 10px;
+            padding-left: 28px;
+            position: relative;
+        }
+        
+        .result-section li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: 700;
         }
         
         .cta-button {
             display: inline-block;
-            padding: 18px 36px;
+            padding: 22px 45px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             text-decoration: none;
-            border-radius: 10px;
+            border-radius: 14px;
             font-weight: 700;
-            font-size: 16px;
-            margin-top: 20px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            font-size: 18px;
+            margin-top: 25px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 30px rgba(102,126,234,0.4);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s ease;
         }
         
         .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(102,126,234,0.5);
+        }
+        
+        .cta-button:hover::before {
+            left: 100%;
         }
         
         .secondary-cta {
             display: block;
-            margin-top: 15px;
+            margin-top: 20px;
             color: #667eea;
             text-decoration: none;
-            font-size: 14px;
+            font-size: 15px;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        
+        .secondary-cta:hover {
+            color: #764ba2;
         }
         
         .disclaimer {
-            margin-top: 40px;
-            padding-top: 20px;
+            margin-top: 50px;
+            padding-top: 25px;
             border-top: 1px solid #e8e8e8;
-            font-size: 12px;
+            font-size: 13px;
             color: #999;
             text-align: center;
         }
         
         .intro {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
         }
         
         .intro p {
             color: #666;
-            font-size: 16px;
-            line-height: 1.6;
+            font-size: 18px;
+            line-height: 1.7;
         }
         
         @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+            
             .container {
-                padding: 25px;
+                padding: 30px 25px;
+                border-radius: 20px;
             }
             
             h1 {
-                font-size: 26px;
+                font-size: 34px;
             }
             
             .question-text {
-                font-size: 19px;
+                font-size: 22px;
+            }
+            
+            .option {
+                padding: 18px 20px;
+            }
+            
+            .result-title {
+                font-size: 28px;
             }
         }
     </style>
 </head>
 <body>
+    <div class="bg-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+    
     <div class="container">
         <div class="header">
-            <h1>Find Your Fracture</h1>
-            <p class="subtitle">90-second diagnostic for LinkedIn stalls</p>
+            <div class="badge">90 Second Diagnostic</div>
+            <h1>Find Your <span>Fracture</span></h1>
+            <p class="subtitle">Discover why your LinkedIn isn't converting — and which of the three fractures is breaking it.</p>
         </div>
         
-        <div class="progress-bar">
-            <div class="progress-fill" id="progress" style="width: 0%"></div>
+        <div class="progress-container">
+            <div class="progress-header">
+                <span>Progress</span>
+                <span id="progress-text">0%</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress" style="width: 0%"></div>
+            </div>
         </div>
         
         <!-- Question 1 -->
@@ -367,7 +597,7 @@
                 <p>Narrow until it hurts. Name one specific person — their age, their business, their exact problem. Write to them exclusively. Everyone else is a bonus.</p>
             </div>
             <a href="https://calendly.com/reyescastillo/fracture-map" class="cta-button">Book Your Fracture Map Call — $500</a>
-            <a href="mailto:reyes@agentmail.to?subject=Question about my Avatar fracture" class="secondary-cta">Have a question? Email me</a>
+            <a href="mailto:reyes@agentmail.to?subject=Question about my Avatar fracture" class="secondary-cta">Have a question? Email me directly</a>
         </div>
         
         <div class="result" id="result-offer">
@@ -389,7 +619,7 @@
                 <p>Stop describing your process. Start describing their life after working with you. The offer isn't what you do — it's who they become.</p>
             </div>
             <a href="https://calendly.com/reyescastillo/fracture-map" class="cta-button">Book Your Fracture Map Call — $500</a>
-            <a href="mailto:reyes@agentmail.to?subject=Question about my Offer fracture" class="secondary-cta">Have a question? Email me</a>
+            <a href="mailto:reyes@agentmail.to?subject=Question about my Offer fracture" class="secondary-cta">Have a question? Email me directly</a>
         </div>
         
         <div class="result" id="result-copy">
@@ -411,7 +641,7 @@
                 <p>Record yourself explaining your work to a client you know well. Transcribe it. That's your voice. Use that.</p>
             </div>
             <a href="https://calendly.com/reyescastillo/fracture-map" class="cta-button">Book Your Fracture Map Call — $500</a>
-            <a href="mailto:reyes@agentmail.to?subject=Question about my Copy fracture" class="secondary-cta">Have a question? Email me</a>
+            <a href="mailto:reyes@agentmail.to?subject=Question about my Copy fracture" class="secondary-cta">Have a question? Email me directly</a>
         </div>
         
         <div class="disclaimer">
@@ -427,6 +657,7 @@
         function updateProgress() {
             const progress = ((currentQuestion - 1) / totalQuestions) * 100;
             document.getElementById('progress').style.width = progress + '%';
+            document.getElementById('progress-text').textContent = Math.round(progress) + '%';
         }
         
         function showQuestion(num) {
@@ -437,7 +668,7 @@
         
         function showResult() {
             document.querySelectorAll('.question').forEach(q => q.classList.remove('active'));
-            document.getElementById('progress').style.width = '100%';
+            document.querySelector('.progress-container').style.display = 'none';
             
             // Determine result
             let max = Math.max(answers.A, answers.B, answers.C);
